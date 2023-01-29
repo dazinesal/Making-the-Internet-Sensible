@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Urban Dictionary Disambiguator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Results</h2>
+        <p><b>Context:</b> {{context}}</p>
+        {% for i in range(0, resultsNum) %}
+        <p><b>Target:</b> {{target[i]}}</p>
+        <div class="row" style="overflow: hidden;">
+            <div class="col-md-6" style="border-right-style: solid; border-right-color: black; margin-bottom: -99999px; padding-bottom: 99999px;">
+                <h3 style="text-align: center;">Predicted sense</h3>                
+                {% if all_predicted_answer[i][0] %}
+                <p><b>Source:</b> {{all_predicted_answer[i][3]}}</p>                
+                <p><b>Sense:</b> {{all_predicted_answer[i][0].word}}</p>
+                <p><b>Definition:</b> {{all_predicted_answer[i][0].definition}}</p>
+                <p><b>Overlap:</b> {{all_predicted_answer[i][1]}}</p>
+                <p><b>Similarity:</b> {{all_predicted_answer[i][2]}}</p>                
+                {% else %}
+                <p style="color: red;">Sense not found in any source<p>
+                {% endif %}
+            </div>
+            <div class="col-md-6" style="color: grey; margin-bottom: -99999px; padding-bottom: 99999px;">
+                <h3 style="text-align: center;">Alternate source sense</h3>
+                {% if all_alternate_answer[i][0] %}
+                <p><b>Source:</b> {{all_alternate_answer[i][3]}}</p>                
+                <p><b>Sense:</b> {{all_alternate_answer[i][0].word}}</p>
+                <p><b>Definition:</b> {{all_alternate_answer[i][0].definition}}</p>
+                <p><b>Overlap:</b> {{all_alternate_answer[i][1]}}</p>
+                <p><b>Similarity:</b> {{all_alternate_answer[i][2]}}</p>                
+                {% else %}
+                <p style="color: red;">Alternate source sense not found<p>
+                {% endif %}
+            </div>
+        </div>
+        <hr style="border: solid; border-color: black; border-width: 1px;">
+        {% endfor %}
+        <br>
+        <div class="row">            
+            <a href="/">Back</a>
+        </div>
+    </div>
+</body>
+</html>

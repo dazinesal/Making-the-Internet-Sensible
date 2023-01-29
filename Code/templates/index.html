@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Urban Dictionary Disambiguator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Entry Form</h2>
+    {% for e in errors %}
+    <p style="color: red;">{{e}}</p>
+    {% endfor %}
+    {% if evaluationSaved %}
+        <p style="color: green;">{{evaluationSaved}}</p>
+    {% endif %}
+    {% if evaluationNotSaved %}
+        <p style="color: orange;">{{evaluationNotSaved}}</p>
+    {% endif %}
+    <form action="/disambiguate" method="POST">
+        <div class="form-group">
+            <label for="email">Context:<label>
+            <br>
+            <textarea type="text" style="resize: none;" cols="100" rows="10" class="form-control" id="context" placeholder="Enter context" name="context"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Target Words:</label>
+            <input type="text" class="form-control" id="target" placeholder="Enter target words" name="target">
+            <p><i>Multiple target words must be separeted by a comma</i></p>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
