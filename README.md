@@ -1,2 +1,2 @@
 # Making-the-Internet-Sensible
-Using Urban Dictionary for word sense disambiguation
+Word sense disambiguation of online slang language using average cosine similarity with Urban Dictionary.
