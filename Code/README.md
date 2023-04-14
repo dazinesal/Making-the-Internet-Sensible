@@ -1,4 +1,4 @@
-# Web-Data-Processing-Systems Assignment 2
+# Making-the-Internet-Sensible
 
 ### Install required libraries
 	- `pip3 install -r requirements.txt`
